@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check Dir
+        run: ls -la
+
       - uses: actions/checkout@v2.1.0
       - uses: uraimo/run-on-arch-action@v2.0.5
         name: Build Gn
@@ -48,6 +51,9 @@ jobs:
             cp out/gn /artifacts/gn
             echo "Produced Gn at /artifacts/gn"
 
+      - name: Prepare Binary
+        run: zip -r ${PWD}/artifacts/gn.zip ${PWD}/artifacts/gn
+
       - name: Upload release to GitHub
         uses: softprops/action-gh-release@v1
         if: |
@@ -57,5 +63,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: |
-            ${PWD}/artifacts/gn
+            ${PWD}/artifacts/gn.zip
           draft: true
