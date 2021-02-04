@@ -38,12 +38,17 @@ jobs:
           # publicly in your project's package repository, so it is vital that
           # no secrets are present in the container state or logs.
           install: |
+            apt update -y
             apt install git build-essential -y
 
           # Produce a binary artifact and place it in the mounted volume
           run: |
-            cp out/gn /artifacts/
-            echo "Produced Gn at /artifacts/"
+            git clone https://gn.googlesource.com/gn
+            cd gn
+            python build/gen.py
+            ninja -C out
+            cp out/gn /artifacts/gn
+            echo "Produced Gn at /artifacts/gn"
 
       - name: Upload release to GitHub
         uses: softprops/action-gh-release@v1
