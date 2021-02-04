@@ -49,10 +49,13 @@ jobs:
             python build/gen.py
             ninja -C out
             cp out/gn /artifacts/gn
-            echo "Produced Gn at /artifacts/gn"
+            echo "Produced Gn at ${ls /artifacts}"
 
       - name: Prepare Binary
-        run: zip -r ${PWD}/artifacts/gn.zip ${PWD}/artifacts/gn
+        run: |
+          ls artifacts
+          zip -r artifacts/gn.zip artifacts/gn
+          ls -l artifacts/gn.zip
 
       - name: Upload release to GitHub
         uses: softprops/action-gh-release@v1
@@ -63,5 +66,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: |
-            ${PWD}/artifacts/gn.zip
+            artifacts/gn.zip
           draft: true
