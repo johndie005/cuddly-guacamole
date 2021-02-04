@@ -30,7 +30,7 @@ jobs:
             --volume "${PWD}/artifacts:/artifacts"
 
           # The shell to run commands with in the container
-          shell: /bin/sh
+          shell: /bin/bash
 
           # Install some dependencies in the container. This speeds up builds if
           # you are also using githubToken. Any dependencies installed here will
