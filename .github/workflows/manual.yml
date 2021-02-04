@@ -17,9 +17,6 @@ jobs:
           arch: aarch64
           distro: ubuntu20.04
 
-          # Not required, but speeds up builds
-          githubToken: ${{ github.token }}
-
           # Create an artifacts directory
           setup: |
             mkdir -p "${PWD}/artifacts"
@@ -39,7 +36,7 @@ jobs:
           # no secrets are present in the container state or logs.
           install: |
             apt update -y
-            apt install git python ninja build-essential -y
+            apt install git python ninja-build build-essential -y
 
           # Produce a binary artifact and place it in the mounted volume
           run: |
