@@ -49,7 +49,7 @@ jobs:
             python build/gen.py
             ninja -C out
             cp out/gn /artifacts/gn
-            echo "Produced Gn at ${ls /artifacts}"
+            echo "Produced Gn at $(ls /artifacts)"
 
       - name: Prepare Binary
         run: |
