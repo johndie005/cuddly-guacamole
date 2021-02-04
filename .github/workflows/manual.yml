@@ -15,7 +15,7 @@ jobs:
         id: build
         with:
           arch: aarch64
-          distro: ubuntu20.4
+          distro: ubuntu20.04
 
           # Not required, but speeds up builds
           githubToken: ${{ github.token }}
@@ -28,10 +28,6 @@ jobs:
           dockerRunArgs: |
             --volume "${PWD}/artifacts:/artifacts"
 
-          # Pass some environment variables to the container
-          env: | # YAML, but pipe character is necessary
-            artifact_name: git-${{ matrix.distro }}_${{ matrix.arch }}
-
           # The shell to run commands with in the container
           shell: /bin/sh
 
@@ -42,7 +38,7 @@ jobs:
           # publicly in your project's package repository, so it is vital that
           # no secrets are present in the container state or logs.
           install: |
-            apt install git build-essential
+            apt install git build-essential -y
 
           # Produce a binary artifact and place it in the mounted volume
           run: |
