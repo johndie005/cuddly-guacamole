@@ -1,7 +1,6 @@
 name: Build Gn
 
-on: push
-# workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   build:
@@ -19,7 +18,7 @@ jobs:
         id: build
         with:
           arch: aarch64
-          distro: ubuntu20.04
+          distro: ubuntu18.04
 
           # Create an artifacts directory
           setup: |
