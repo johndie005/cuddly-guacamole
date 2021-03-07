@@ -40,8 +40,8 @@ jobs:
           # publicly in your project's package repository, so it is vital that
           # no secrets are present in the container state or logs.
           install: |
-            apt update -y
-            apt install git python ninja-build build-essential clang llvm -y
+            apt-get update -y
+            apt-get install git python ninja-build build-essential clang llvm -y
 
           # Produce a binary artifact and place it in the mounted volume
           run: |
