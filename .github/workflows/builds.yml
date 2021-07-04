@@ -2,8 +2,7 @@ name: Build Gn
 
 on:
  schedule:
-   - cron: "* * 1 * *"
-  
+   - cron:  '* * 1 * *'
   release:
     types: [published]
 
