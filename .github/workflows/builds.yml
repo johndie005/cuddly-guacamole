@@ -7,7 +7,7 @@ on:
     inputs:
       name:
         description: 'Person to greet'
-        required: true
+        required: false
         default: 'Mona the Octocat'
   release:
     types: [published]
