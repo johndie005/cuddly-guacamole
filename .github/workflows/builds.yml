@@ -73,5 +73,5 @@ jobs:
           prerelease: true
           title: "Gn Build"
           files: |
-            gn.zip
+            artifacts/gn.zip
           draft: true
