@@ -3,7 +3,12 @@ name: Build Gn
 on:
   schedule:
     - cron: '* * 1 * *'
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
   release:
     types: [published]
 
