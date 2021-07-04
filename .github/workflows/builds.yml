@@ -74,4 +74,4 @@ jobs:
           title: "Gn Build"
           files: |
             artifacts/gn.zip
-          draft: true
+          draft: false
